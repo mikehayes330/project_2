@@ -52,4 +52,10 @@ module.exports = function(app) {
       });
     }
   });
+  //api route to get ALL of the bookmark data
+  app.get("/api/bookmark", (req, res) => {
+    db.Bookmark.findAll({}).then(dbBookmark => {
+      res.json(dbBookmark);
+    });
+  });
 };

@@ -1,5 +1,6 @@
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const db = require("../models");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
@@ -23,8 +24,11 @@ module.exports = function(app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.render("members");
   });
-  // route added to the addBookmark page.
+  //  route added to the addBookmark page. (This is not working yet with handle bars)
   app.get("/addBookmark", isAuthenticated, (req, res) => {
-    res.render("addBookmark");
+    db.Bookmark.findAll({}).then(data => {
+      console.log(data);
+      res.render("addBookmark", data);
+    });
   });
 };
