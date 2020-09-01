@@ -23,4 +23,8 @@ module.exports = function(app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.render("members");
   });
+  // route added to the addBookmark page.
+  app.get("/addBookmark", isAuthenticated, (req, res) => {
+    res.render("addBookmark");
+  });
 };
