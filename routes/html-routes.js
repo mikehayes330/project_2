@@ -24,11 +24,17 @@ module.exports = function(app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.render("members");
   });
-  //  route added to the addBookmark page. (This is not working yet with handle bars)
+  //  route added to the addBookmark page.
   app.get("/addBookmark", isAuthenticated, (req, res) => {
-    db.Bookmark.findAll({}).then(data => {
-      console.log(data);
-      res.render("addBookmark", data);
+    db.Bookmark.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(bookmark => {
+      res.render("addBookmark", {
+        bookmark: bookmark
+      });
+      console.log(bookmark);
     });
   });
 };

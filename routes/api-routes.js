@@ -58,4 +58,19 @@ module.exports = function(app) {
       res.json(dbBookmark);
     });
   });
+  app.post("/api/addBookmark", (req, res) => {
+    console.log(req.body);
+    db.Bookmark.create({
+      title: req.body.title,
+      url: req.body.url,
+      image: req.body.image,
+      userId: req.body.UserId
+    })
+      .then(() => {
+        res.render("/addBookmark");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
 };

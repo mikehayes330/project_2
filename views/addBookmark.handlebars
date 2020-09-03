@@ -16,14 +16,44 @@
         <h2>Welcome <span class="member-name"></span>!!!!</h2>
         <h2>Let's adds some bookmarks!!</h2>
       </div>
-     {{!-- <ul>
-        {{#each Bookmark}}
-            {{bookmark.title}}
-            {{bookmark.url}}
-        {{/each}}
-    </ul> --}}
+     <ul>
+  
+  
+  
+  
+  {{#each bookmark}}
+    
+    
+   
+    <p>Title: {{dataValues.title}}</p>
+    <p>URL: {{dataValues.url}}</p>
+    
+    {{else}}
+     
+      <p>No Bookmarks Saved yet.</p>
+    
+  {{/each}}
+</ul>
     </div>
   </div>
+<form class="create-form">
+      <div class="form-group">
+        <div>
+          <label for="bookmark">Bookmark Title:</label>
+          <input type="text" id="title" name="name" />
+        </div>
+        <div>
+          <label for="bookmark">Bookmark URL:</label>
+          <input type="text" id="url" name="name" />
+        </div>
+        <div>
+          <label for="bookmark">Bookmark Image:</label>
+          <input type="text" id="image" name="name" />
+        </div>
+      </div>
 
+      
+      <button class="btn btn-success" id ="submitBtn"type="submit">Save your Bookmark</button>
+    </form>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/addBookmark.js"></script>
