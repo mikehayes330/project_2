@@ -5,13 +5,14 @@ $(document).ready(() => {
     $(".member-name").text(data.name);
   });
   const submitBtn = $("#submitBtn");
-  const searchTerm = $("#google")
-    .val()
-    .trim();
+
   // im working on trying to get the google search on the members page currentlyt not functioning
   submitBtn.on("click", e => {
     e.preventDefault();
-    console.log(searchTerm);
+    const searchTerm = $("#google")
+      .val()
+      .trim();
+    window.open("https://www.google.com/search?q=" + searchTerm);
   });
 
   // $("#submitBtn").on("submit", e => {
