@@ -22,7 +22,15 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
-    res.render("members");
+    db.Bookmark.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(bookmark => {
+      res.render("members", {
+        bookmark: bookmark
+      });
+    });
   });
   //  route added to the addBookmark page.
   app.get("/addBookmark", isAuthenticated, (req, res) => {
@@ -34,7 +42,6 @@ module.exports = function(app) {
       res.render("addBookmark", {
         bookmark: bookmark
       });
-      console.log(bookmark);
     });
   });
 };

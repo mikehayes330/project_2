@@ -24,9 +24,11 @@
   {{#each bookmark}}
     
     
+   <div> <p>{{dataValues.title}}</p>
+    <p> <p> <a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
+    <button class="delete-bookmark btn btn-danger" data-id="{{dataValues.id}}">DELETE!</button>
+    </div>
    
-    <p>Title: {{dataValues.title}}</p>
-    <p>URL: {{dataValues.url}}</p>
     
     {{else}}
      

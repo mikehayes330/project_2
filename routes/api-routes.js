@@ -58,19 +58,24 @@ module.exports = function(app) {
       res.json(dbBookmark);
     });
   });
+  // api route to create a bookmark in the database
   app.post("/api/addBookmark", (req, res) => {
-    console.log(req.body);
     db.Bookmark.create({
       title: req.body.title,
       url: req.body.url,
       image: req.body.image,
-      userId: req.body.UserId
-    })
-      .then(() => {
-        res.render("/addBookmark");
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
+      UserId: req.user.id
+    }).then(dbBookmark => {
+      res.json(dbBookmark);
+    });
+  });
+  // route to delete bookmarks from the edit page
+  app.delete("/api/bookmark/:id", (req, res) => {
+    const id = req.params.id;
+    db.Bookmark.destroy({
+      where: { id: id }
+    }).then(dbBookmark => {
+      res.json(dbBookmark);
+    });
   });
 };

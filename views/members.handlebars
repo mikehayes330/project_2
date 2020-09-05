@@ -10,13 +10,33 @@
     </div>
   </div>
 </nav>
+ <form>
+  <label for="google">Google</label><br>
+  <input type="text" id="google" ><br>
+  <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+</form>
+ 
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2>Welcome <span class="member-name"></span>!!!!</h2>
         <h2>Let's have a great day!!</h2>
       </div>
-      <div class="bookmark-name"></div>
+      <div class="bookmark-name">
+
+        {{#each bookmark}}
+    
+    
+   <div> <p>{{dataValues.title}}</p>
+    <p> <a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p></div>
+   
+    
+    {{else}}
+     
+      <p>No Bookmarks Saved yet.</p>
+    
+  {{/each}}
+      </div>
     </div>
   </div>
 

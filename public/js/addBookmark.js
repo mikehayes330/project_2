@@ -9,7 +9,7 @@ $(document).ready(() => {
     const bookmarkImage = $("#image");
     const submitBtn = $("#submitBtn");
 
-    // When the signup button is clicked, we validate the email and password are not blank
+    // submitBtn is clicked we grab bookmark data and post it to api/addBOokmark
     submitBtn.on("click", event => {
       event.preventDefault();
       const bookmarkData = {
@@ -18,21 +18,18 @@ $(document).ready(() => {
         image: bookmarkImage.val().trim(),
         UserId: userId
       };
-      console.log(bookmarkData);
-      // If we have an email and password, run the signUpUser function
+
       addNewBookmark(
         bookmarkData.title,
         bookmarkData.url,
         bookmarkData.image,
         userId
       );
-      //   bookmarkTitle.val("");
-      //   bookmarkUrl.val("");
-      //   bookmarkImage.val("");
+      bookmarkTitle.val("");
+      bookmarkUrl.val("");
+      bookmarkImage.val("");
     });
 
-    // Does a post to the signup route. If successful, we are redirected to the members page
-    // Otherwise we log any errors
     function addNewBookmark(title, url, image, UserId) {
       console.log(title, url, image, UserId);
       $.post("/api/addBookmark", {
@@ -52,5 +49,19 @@ $(document).ready(() => {
       $("#alert .msg").text(err.responseJSON);
       $("#alert").fadeIn(500);
     }
+  });
+  //handles the delete of the bookmark
+  $(".delete-bookmark").on("click", function(event) {
+    event.preventDefault();
+    const id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.ajax("/api/bookmark/" + id, {
+      type: "DELETE"
+    }).then(() => {
+      console.log("deleted bookmark", id);
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 });
