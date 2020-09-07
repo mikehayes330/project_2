@@ -1,5 +1,18 @@
 $(document).ready(() => {
+  const backgroundImage =
+    "https://images.unsplash.com/photo-1555066931-bf19f8fd1085?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE2MzYzN30";
+  const body = $("body");
+  body.css("background-image", "url(" + backgroundImage + ")");
   // Getting references to our form and input
+  const googleSubmit = $("#googleSubmit");
+  googleSubmit.on("click", e => {
+    e.preventDefault();
+    const searchTerm = $("#google")
+      .val()
+      .trim();
+    window.open("https://www.google.com/search?q=" + searchTerm);
+    searchTerm.val("");
+  });
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.name);
     const userId = data.id;
@@ -7,10 +20,10 @@ $(document).ready(() => {
     const bookmarkTitle = $("#title");
     const bookmarkUrl = $("#url");
     const bookmarkImage = $("#image");
-    const submitBtn = $("#submitBtn");
+    const bookmarkSubmit = $("#bookmarkSubmit");
 
     // submitBtn is clicked we grab bookmark data and post it to api/addBOokmark
-    submitBtn.on("click", event => {
+    bookmarkSubmit.on("click", event => {
       event.preventDefault();
       const bookmarkData = {
         title: bookmarkTitle.val().trim(),

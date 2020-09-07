@@ -1,72 +1,147 @@
- <nav class="navbar navbar-default">
+<!-- nav bar -->
+<nav class="navbar navbar-dark bg-transparent">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-      <a class="navbar-brand" href="/members">
-        Back to Homepage
-      </a>
+      <a class="navbar-brand" href="/logout"> Logout </a>
+      <a class="navbar-brand" href="/members"> Back to Home </a>
     </div>
   </div>
 </nav>
- 
- 
- 
- 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span>!!!!</h2>
-        <h2>Let's adds some bookmarks!!</h2>
+
+<!-- main container -->
+<div class="container">
+  <!-- first row containg the header-->
+  <div class="row">
+    <div id="mainHead" class="col-md-6 col-md-offset-3">
+      <h1>Welcome <span class="member-name">Mike </span>!!!!</h1>
+      <h2>Let's add some bookmarks</h2>
+      <h2>12:52 PM, Monday</h2>
+    </div>
+  </div>
+  <!-- second row conataining the google search bar -->
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div>
+        <form id="googleForm">
+          <label for="google">Google</label><br />
+          <input type="text" id="google" /><br />
+          <button type="submit" id="googleSubmit" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
 
-     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-         {{#each bookmark}}
-     
-    
-     <div class="col-md-6 col-md-offset-3" >
-       <p>{{dataValues.title}}</p>
-       <p><a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
-      <button class="delete-bookmark btn btn-danger" data-id="{{dataValues.id}}">DELETE!</button>
+      <div>
+        <form class="create-form">
+          <div class="form-group">
+            <div class="d-flex justify-content-center">
+              <label for="bookmark">Bookmark Title:</label>
+              <input type="text" id="title" name="name" />
+            </div>
+            <div>
+              <label for="bookmark">Bookmark URL:</label>
+              <input type="text" id="url" name="name" />
+            </div>
+            <div>
+              <label for="bookmark">Bookmark Image:</label>
+              <input type="text" id="image" name="name" />
+            </div>
+          </div>
+          <button class="btn btn-success" id="bookmarkSubmit" type="submit">Save your Bookmark</button>
+        </form>
+      </div>
     </div>
-   
-    
+  </div>
+</div>
+{{!-- div to display all bookmarks --}}
+<div class="row">
+  <div id="bookmarkDiv" class="col-md-6 col-md-offset-3">
+    {{#each bookmark}}
+
+    <div>
+      <p>{{dataValues.title}}</p>
+      <p><a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
+      <button class="delete-bookmark btn btn-danger" data-id="{{dataValues.id}}">DELETE</button>
+    </div>
+
     {{else}}
-     
-      <p>No Bookmarks Saved yet.</p>
-    
+
+    <p>No Bookmarks Saved yet.</p>
+
     {{/each}}
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/addBookmark.js"></script>
+
+
+
+
+
+
+
+
+
+{{!-- <div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Welcome <span class="member-name"></span>!!!!</h1>
+      <h2>Let's adds some bookmarks!!</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      {{#each bookmark}}
+
+
+      <div class="col-md-6 col-md-offset-3">
+        <p>{{dataValues.title}}</p>
+        <p><a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
+        <button class="delete-bookmark btn btn-danger" data-id="{{dataValues.id}}"><i
+            class="far fa-trash-alt"></i></button>
+      </div>
+
+
+      {{else}}
+
+      <p>No Bookmarks Saved yet.</p>
+
+      {{/each}}
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <form class="create-form">
+    <div class="form-group">
+      <div>
+        <label for="bookmark">Bookmark Title:</label>
+        <input type="text" id="title" name="name" />
+      </div>
+      <div>
+        <label for="bookmark">Bookmark URL:</label>
+        <input type="text" id="url" name="name" />
+      </div>
+      <div>
+        <label for="bookmark">Bookmark Image:</label>
+        <input type="text" id="image" name="name" />
       </div>
     </div>
-    
-    
-    
-     
 
-    
- 
-<form class="create-form">
-      <div class="form-group">
-        <div>
-          <label for="bookmark">Bookmark Title:</label>
-          <input type="text" id="title" name="name" />
-        </div>
-        <div>
-          <label for="bookmark">Bookmark URL:</label>
-          <input type="text" id="url" name="name" />
-        </div>
-        <div>
-          <label for="bookmark">Bookmark Image:</label>
-          <input type="text" id="image" name="name" />
-        </div>
-      </div>
 
-      
-      <button class="btn btn-success" id ="submitBtn"type="submit">Save your Bookmark</button>
-    </form>
-    </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/addBookmark.js"></script>
+    <button class="btn btn-success" id="submitBtn" type="submit">Save your Bookmark</button>
+  </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/addBookmark.js"></script> --}}

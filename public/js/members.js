@@ -5,26 +5,27 @@ $(document).ready(() => {
     $(".member-name").text(data.name);
   });
   const submitBtn = $("#submitBtn");
-
-  // im working on trying to get the google search on the members page currentlyt not functioning
+  // when submit button is clicked the we open a new webpage to the search ternm fgor google
   submitBtn.on("click", e => {
     e.preventDefault();
     const searchTerm = $("#google")
       .val()
       .trim();
     window.open("https://www.google.com/search?q=" + searchTerm);
+    searchTerm.val("");
   });
+  const APIKEY = "iYuBzpWZ8zDUHFI7z0S3VrwjPKiRAFv233EFa-cxW7U";
+  $.get(
+    "https://api.unsplash.com/photos/random?client_id=" +
+      APIKEY +
+      "&count=1&orientation=landscape"
+  ).then(res => {
+    const background = res[0].urls.full;
+    const body = $("body");
+    const photoLink = $("#photoLink");
+    body.css("background-image", "url(" + background + ")");
+    photoLink.innerHTML("<a>" + background + "</a>");
 
-  // $("#submitBtn").on("submit", e => {
-  //   e.preventDefault();
-  //   const searchTerm = $("#google").val();
-  //   const queryURL = "https://www.google.com/search?q=" + searchTerm;
-  //   console.log(searchTerm, queryURL);
-  //   $.ajax({
-  //     url: queryURL,
-  //     method: "GET"
-  //   }).then(response => {
-  //     console.log(response);
-  //   });
-  // });
+    console.log(res[0]);
+  });
 });

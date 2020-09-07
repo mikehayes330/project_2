@@ -2,3 +2,46 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  background-color: black;
+}
+#googleForm {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  align-items: center;
+}
+#mainHead {
+  color: white;
+  justify-content: center;
+  align-content: center;
+  background: rgb(
+    0,
+    0,
+    0
+  ); /* Fallback for older browsers without RGBA-support */
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 0px 0px 50px 52px rgba(0, 0, 0, 0.8);
+}
+#bookmarkDiv {
+  background: rgb(
+    0,
+    0,
+    0
+  ); /* Fallback for older browsers without RGBA-support */
+  background: rgba(0, 0, 0, 0.8);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 0px 0px 50px 52px rgba(0, 0, 0, 0.8);
+}
+#addForm {
+  align-items: center;
+}
