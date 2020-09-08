@@ -1,6 +1,17 @@
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
+
+  // displays time to page every second
+  setInterval(() => {
+    const currentTimeDiv = $("#currrentTime");
+    const currentDayDiv = $("#currentDay");
+    const currentTime = moment().format("h:mm:ss");
+    const currentDay = moment().format("dddd");
+    currentTimeDiv.text(currentTime);
+    currentDayDiv.text(currentDay);
+  }, 1000);
+
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.name);
   });
@@ -25,7 +36,5 @@ $(document).ready(() => {
     const photoLink = $("#photoLink");
     body.css("background-image", "url(" + background + ")");
     photoLink.innerHTML("<a>" + background + "</a>");
-
-    console.log(res[0]);
   });
 });
