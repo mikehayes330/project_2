@@ -18,6 +18,11 @@ body {
   align-content: space-between;
 
 }
+#addForm{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
 #mainHead {
   justify-content: center;
   align-content: center;
@@ -54,6 +59,10 @@ h1{
   margin: 15px;
   border-radius: 9999em;
 }
+#bookmarkSubmit{
+ 
+  border-radius: 9999em;
+}
 #googleSubmit{
   margin: 15px;
   border-radius: 9999em;
@@ -61,6 +70,13 @@ h1{
 
 input{
  border-radius: 9999em;
+ padding:5px;
+ margin: 2px;
+ box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+ transition: all .2s ease-in-out;
+}
+input:hover{
+box-shadow: 0 0 15px rgba(81, 203, 238, 1);
 }
 input.placeholder {
     text-align: center;
