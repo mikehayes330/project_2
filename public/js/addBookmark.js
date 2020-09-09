@@ -1,8 +1,13 @@
 $(document).ready(() => {
+  // this is the background image for the addbookmark page
   const backgroundImage =
     "https://images.unsplash.com/photo-1555066931-bf19f8fd1085?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE2MzYzN30";
   const body = $("body");
   body.css("background-image", "url(" + backgroundImage + ")");
+  // const myModal = $("#myModal");
+  // const modalSubmit = $("#modalSubmit");
+  // modalSubmit.on("click", myModal.modal("show"));
+
   // Getting references to our form and input
   const googleSubmit = $("#googleSubmit");
   googleSubmit.on("click", e => {
@@ -13,6 +18,7 @@ $(document).ready(() => {
     window.open("https://www.google.com/search?q=" + searchTerm);
     searchTerm.val("");
   });
+
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.name);
     const userId = data.id;
@@ -31,7 +37,7 @@ $(document).ready(() => {
         image: bookmarkImage.val().trim(),
         UserId: userId
       };
-
+      console.log(bookmarkData);
       addNewBookmark(
         bookmarkData.title,
         bookmarkData.url,

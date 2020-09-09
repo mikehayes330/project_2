@@ -13,9 +13,8 @@
   <!-- first row containg the header-->
   <div class="row">
     <div id="mainHead" class="col-md-6 col-md-offset-3">
-      <h1>Welcome <span class="member-name">Mike </span>!!!!</h1>
-      <h2>Let's add some bookmarks</h2>
-      <h2>12:52 PM, Monday</h2>
+      <h1 class="whiteText">Welcome <span class="member-name whiteText">Mike </span>!</h1>
+      <h2 class="whiteText">Let's add some bookmarks</h2>
     </div>
   </div>
   <!-- second row conataining the google search bar -->
@@ -23,8 +22,7 @@
     <div class="col-md-6 col-md-offset-3">
       <div>
         <form id="googleForm">
-          <label for="google">Google</label><br />
-          <input type="text" id="google" /><br />
+          <input class="input" type="text" id="google" /><br />
           <button type="submit" id="googleSubmit" class="btn btn-primary">
             Submit
           </button>
@@ -33,54 +31,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-12 col-md-offset-3">
 
-      <div>
-        {{!-- button to trigger modal --}}
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBookmarkModal">
-          Add a bookmark
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="addBookmarkModal" tabindex="-1" aria-labelledby="addBookmarkModal" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="addBookmarkModal">Add a Bookmark</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                {{!-- form to add new bookmark --}}
-                <form class="create-form">
-                  <div class="form-group">
-                    <div class="d-flex justify-content-center">
-                      <label for="bookmark">Bookmark Title:</label>
-                      <input type="text" id="title" name="name" />
-                    </div>
-                    <div>
-                      <label for="bookmark">Bookmark URL:</label>
-                      <input type="text" id="url" name="name" />
-                    </div>
-                    <div>
-                      <label for="bookmark">Bookmark Image:</label>
-                      <input type="text" id="image" name="name" />
-                    </div>
-                  </div>
-                  <button class="btn btn-success" id="bookmarkSubmit" type="submit">Save your Bookmark</button>
-                </form>
-                {{!--END of form to add new bookmark --}}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+      <div  class="d-flex justify-content-center">
+        {{!-- form to add new bookmark --}}
+        <form class="create-form d-flex justify-content-center">
+          <div class="form-group">
+            <div class="d-flex justify-content-center">
+              <input style="text-align: center" placeholder="Title" type="text" id="title" name="name" />
+            </div>
+            <div>
+              <input style="text-align: center" placeholder="www.website.com" type="text" id="url" name="name" />
+            </div>
+            <div>
+              <input style="text-align: center" placeholder="Image" type="text" id="image" name="name" />
             </div>
           </div>
-        </div>
-        {{!--END OF MODAL --}}
-
+          <button class="btn btn-success" id="bookmarkSubmit" type="submit">Save your Bookmark</button>
+        </form>
+        {{!--END of form to add new bookmark --}}
 
       </div>
 
@@ -92,10 +61,10 @@
   <div id="bookmarkDiv" class="col-md-6 col-md-offset-3">
     {{#each bookmark}}
 
-    <div>
+    <div class="whiteText">
       <p>{{dataValues.title}}</p>
       <p><a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
-      <button class="delete-bookmark btn btn-danger" data-id="{{dataValues.id}}">DELETE</button>
+      <button class="delete-bookmark btn btn-danger" data-id="{{dataValues.id}}"><i class="fas fa-trash-alt"></i></button>
     </div>
 
     {{else}}
@@ -105,76 +74,29 @@
     {{/each}}
 
   </div>
-</div>
+  <!-- Modal -->
+  <!-- Modal -->
+  {{!-- <div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog"> --}}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+      <!-- Modal content-->
+      {{!-- <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"> &times; </button>
+          <h4 class="modal-title">Add A Bookmark</h4>
+        </div>
+        <div class="modal-body">
 
-<script type="text/javascript" src="js/addBookmark.js"></script>
-
-
-
-
-
-
-
-
-
-{{!-- <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h1>Welcome <span class="member-name"></span>!!!!</h1>
-      <h2>Let's adds some bookmarks!!</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      {{#each bookmark}}
+        </div>
 
 
-      <div class="col-md-6 col-md-offset-3">
-        <p>{{dataValues.title}}</p>
-        <p><a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
-        <button class="delete-bookmark btn btn-danger" data-id="{{dataValues.id}}"><i
-            class="far fa-trash-alt"></i></button>
       </div>
-
-
-      {{else}}
-
-      <p>No Bookmarks Saved yet.</p>
-
-      {{/each}}
-    </div>
+    </div> --}}
+    {{!--END OF MODAL --}}
   </div>
 
 
 
-
-
-
-
-  <form class="create-form">
-    <div class="form-group">
-      <div>
-        <label for="bookmark">Bookmark Title:</label>
-        <input type="text" id="title" name="name" />
-      </div>
-      <div>
-        <label for="bookmark">Bookmark URL:</label>
-        <input type="text" id="url" name="name" />
-      </div>
-      <div>
-        <label for="bookmark">Bookmark Image:</label>
-        <input type="text" id="image" name="name" />
-      </div>
-    </div>
-
-
-    <button class="btn btn-success" id="submitBtn" type="submit">Save your Bookmark</button>
-  </form>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/addBookmark.js"></script> --}}
+  <script src="https://kit.fontawesome.com/8e9f94faa6.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/addBookmark.js"></script>

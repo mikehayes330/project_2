@@ -2,46 +2,71 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+
 body {
   background-repeat: no-repeat;
   background-size: cover;
-  color: white;
-  background-color: black;
+  background-color:white;
+  font-family: 'Roboto', sans-serif;
 }
 #googleForm {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
   align-items: center;
+  align-content: space-between;
+
 }
 #mainHead {
-  color: white;
   justify-content: center;
   align-content: center;
-  background: rgb(
-    0,
-    0,
-    0
-  ); /* Fallback for older browsers without RGBA-support */
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 50px;
   text-align: center;
-  box-shadow: 0px 0px 50px 52px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 10px 8px #000000;
 }
 #bookmarkDiv {
-  background: rgb(
-    0,
-    0,
-    0
-  ); /* Fallback for older browsers without RGBA-support */
-  background: rgba(0, 0, 0, 0.8);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
-  border-radius: 50px;
   text-align: center;
-  box-shadow: 0px 0px 50px 52px rgba(0, 0, 0, 0.8);
+  font-size: 2rem;
 }
 #addForm {
   align-items: center;
 }
+.whiteText{
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+#currentDay{
+  font-size: 6rem;
+}
+#currentTime{
+  font-size: 6rem;
+}
+h1{
+  font-size: 7rem;
+}
+.fa-google{
+  font-size: 6rem;
+}
+#submitBtn {
+  margin: 15px;
+  border-radius: 9999em;
+}
+#googleSubmit{
+  margin: 15px;
+  border-radius: 9999em;
+}
+
+input{
+ border-radius: 9999em;
+}
+input.placeholder {
+    text-align: center;
+}
+#bookmarkForm{
+ justify-content: center;
+}
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.5); }

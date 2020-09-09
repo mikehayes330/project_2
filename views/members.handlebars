@@ -13,8 +13,8 @@
   <!-- first row containg the header-->
   <div class="row">
     <div id="mainHead" class="col-md-6 col-md-offset-3">
-      <h1>Welcome <span class="member-name">Mike </span>!!!!</h1>
-      <h2><span id="currentDay"></span>, <span id="currrentTime"> </span></h2>
+      <h1 class="whiteText">Welcome <span class="member-name whiteText">Mike </span> !</h1>
+      <h2  class="whiteText"><span class="whiteText" id="currentDay"></span>, <span class="whiteText" id="currentTime"> </span></h2>
     </div>
   </div>
   <!-- second row conataining the google search bar -->
@@ -22,10 +22,9 @@
     <div class="col-md-6 col-md-offset-3">
       <div>
         <form id="googleForm">
-          <label for="google">Google</label><br />
-          <input type="text" id="google" /><br />
+          <input class="input" type="text" id="google" /><br />
           <button type="submit" id="submitBtn" class="btn btn-primary">
-            Submit
+            GOOGLE
           </button>
         </form>
       </div>
@@ -38,8 +37,8 @@
     {{#each bookmark}}
 
     <div>
-      <p>{{dataValues.title}}</p>
-      <p><a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
+      {{!-- <p class="whiteText">{{dataValues.title}}</p> --}}
+      <p class="grow"><a class="whiteText" target="_blank" href="https://{{dataValues.url}}"> {{dataValues.title}} </a></p>
     </div>
 
     {{else}}
@@ -52,6 +51,7 @@
   <div id="photoLink"></div>
 </div>
 
+<script src="https://kit.fontawesome.com/8e9f94faa6.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/members.js"></script>
 <script type="text/javascript" src="js/moment.js"></script>

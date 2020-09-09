@@ -4,7 +4,7 @@ $(document).ready(() => {
 
   // displays time to page every second
   setInterval(() => {
-    const currentTimeDiv = $("#currrentTime");
+    const currentTimeDiv = $("#currentTime");
     const currentDayDiv = $("#currentDay");
     const currentTime = moment().format("h:mm:ss");
     const currentDay = moment().format("dddd");
@@ -35,6 +35,6 @@ $(document).ready(() => {
     const body = $("body");
     const photoLink = $("#photoLink");
     body.css("background-image", "url(" + background + ")");
-    photoLink.innerHTML("<a>" + background + "</a>");
+    photoLink.HTML("<a>" + background + "</a>");
   });
 });
