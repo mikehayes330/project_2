@@ -14,7 +14,7 @@ $(document).ready(() => {
     const weatherLat = position.coords.latitude;
     const weatherLon = position.coords.longitude;
     const weatherURL =
-      "http://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" +
+      "https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" +
       weatherLat +
       "&lon=" +
       weatherLon +

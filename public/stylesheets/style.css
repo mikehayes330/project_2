@@ -9,6 +9,7 @@ body {
   background-size: cover;
   background-color:white;
   font-family: 'Roboto', sans-serif;
+  overflow: hidden; /* Hide scrollbars */
 }
 #googleForm {
   display: flex;
