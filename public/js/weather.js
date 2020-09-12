@@ -9,7 +9,7 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  const weatherAPI = process.env.WEATHER_API;
+  const weatherAPI = "64c34ee7c70a13599aaf08ac59e6b5b5";
   const weatherLat = position.coords.latitude;
   const weatherLon = position.coords.longitude;
   const weatherURL =
