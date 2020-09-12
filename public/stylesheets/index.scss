@@ -1,0 +1,503 @@
+/* Font Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* Color Theme Variables*/
+
+$colors: ( dark: #0B0C10,
+light: #1F2833,
+light-grey: #EDEDED,
+light-gray: #ccc,
+light-green: #66FCF1,
+medium-green: #45A29E,
+white: #fff,
+haze-red: #E87770,
+red-focus: darken(#E87770, 15%),
+black: #000,
+);
+@function color($color-name) {
+    @return map-get($colors,
+    $color-name)
+}
+
+;
+
+/* Desktop and Mobile Responsiveness */
+
+$desktop: 661px;
+$mobile: 660px; // default styling (mobile first)
+$small: 329px;
+$xsmall: 315px;
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (max-width: #{$small}) {
+        @content;
+    }
+}
+
+@mixin xsmall {
+    @media (max-width: #{$xsmall}) {
+        @content;
+    }
+}
+
+
+/* Padding and Margin Reset and Initial Background Color Declaration */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html {
+    background-color: color(light-grey);
+}
+
+
+/* Main Header Components */
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    header {
+        background: color(light);
+        padding: 20px;
+        color: #fff;
+        overflow: hidden;
+    }
+    header h1 {
+        display: inline-block;
+        font-size: 28px;
+    }
+    .spanDC {
+        color: color(haze-red)
+    }
+    header nav {
+        float: right;
+        margin-top: auto;
+        padding-top: 10px;
+        margin-right: 20px;
+        font-size: 16px;
+        display: none;
+    }
+    header nav ul {
+        list-style-type: none;
+    }
+    header nav ul li {
+        display: inline-block;
+        margin-left: 25px;
+    }
+    header nav ul li a {
+        text-decoration: none;
+        color: color(white);
+    }
+    header nav ul li a.active {
+        text-decoration: none;
+        color: color(light);
+        padding: 5px;
+        border: 1px solid color(light-grey);
+        border-radius: 50px;
+        background-color: color(light-grey);
+    }
+    header nav ul li a:hover {
+        text-decoration: none;
+        color: color(haze-red);
+        transition: 0.15s;
+    }
+    header nav ul li a:hover.active {
+        text-decoration: none;
+        color: color(light);
+        background-color: color(light-grey);
+    }
+    header nav ul li a:focus {
+        text-decoration: none;
+        color: color(red-focus);
+    }
+    header nav ul li a:focus.active {
+        text-decoration: none;
+        color: color(light);
+    }
+    .menu-toggle {
+        color: color(white);
+        float: right;
+        padding: 3px;
+        font-size: 24px;
+        cursor: pointer;
+        display: block;
+    }
+    .menu-toggle:hover {
+        color: color(haze-red);
+    }
+    footer {
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: #878787
+    }
+    .contain {
+        width: 95%;
+        margin: 25px auto;
+    }
+    .card {
+        width: 100%;
+        height: auto;
+        color: color(dark);
+        background-color: color(white);
+        border-radius: 5px;
+        box-shadow: 0 0 5px lightgrey;
+        margin-top: 8px;
+    }
+    .card-header {
+        text-align: center;
+        padding-top: 5px;
+    }
+    .card-body {
+        width: 80%;
+        margin: 5px auto;
+        padding: 10px;
+    }
+    .has-text-center {
+        text-align: center;
+    }
+    .btn {
+        border-radius: 5px;
+        padding: 5px;
+        width: 100px;
+        text-decoration: none;
+        color: white;
+        background-color: color(haze-red);
+    }
+    .btn:hover {
+        background-color: color(red-focus);
+    }
+    .projImage {
+        width: 95%;
+        margin-bottom: 5px;
+    }
+
+    .cardBtn {
+        padding: 15px;
+        width: auto
+    }
+    @include desktop {
+        .desktop-logo {
+            display: inline-block;
+        }
+        .menu-toggle {
+            display: none;
+        }
+        header nav {
+            display: inline-block;
+        }
+        footer {
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        .contain {
+            width: 70%;
+            margin: 55px auto;
+        }
+        .card {
+            width: 100%;
+            height: auto;
+            color: color(dark);
+            background-color: color(white);
+            border-radius: 5px;
+            padding-top: 10px;
+            box-shadow: 0 0 5px lightgrey;
+            margin-top: 8px;
+        }
+        .card-body {
+            width: 80%;
+            margin: 5px auto;
+            padding-bottom: 25px;
+        }
+        #main {
+            transition: margin-left .5s;
+            overflow: hidden;
+        }
+        .btn {
+            border-radius: 5px;
+            padding: 5px;
+            width: 100px;
+            text-decoration: none;
+            color: white;
+            background-color: color(haze-red);
+        }
+        .btn:hover {
+            background-color: color(red-focus);
+        }
+        .cardBtn {
+            padding: 15px;
+            width: auto;
+        }
+        .form-control {
+            border: 1px solid color(haze-red);
+            padding: 5px;
+            border-radius: 10px;
+            width: 60%;
+            margin-top: 20px;
+            font-family: inherit;
+            font-size: 1.2rem;
+            text-align: center
+        }
+    
+        .form-control:focus {
+            outline: none;
+            border: 1px solid color(red-focus)
+        }
+    }
+    @include small {
+        .logo {
+            font-size: 26px;
+            margin-top: 2px;
+        }
+        footer {
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .contain {
+            width: 100%;
+            margin-top: 25px;
+        }
+        .card {
+            width: 100%;
+            height: auto;
+            color: color(dark);
+            background-color: color(white);
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-shadow: 0 0 5px lightgrey;
+            margin-top: 8px;
+        }
+        .card-body {
+            width: 80%;
+            margin: 5px auto;
+        }
+        #main {
+            transition: margin-left .5s;
+            overflow: hidden;
+        }
+        .btn {
+            border-radius: 5px;
+            padding: 5px;
+            width: 100spx;
+            text-decoration: none;
+            color: white;
+            background-color: color(haze-red);
+        }
+        .btn:hover {
+            background-color: color(red-focus);
+        }
+        .cardBtn {
+            padding: 15px;
+            width: 250px;
+        }
+        .form-control {
+            border: 1px solid color(haze-red);
+            padding: 5px;
+            border-radius: 10px;
+            width: 300px;
+            margin-top: 5px;
+            font-family: inherit;
+            font-size: 1.2rem;
+            text-align: center
+        }
+    
+        .form-control:focus {
+            outline: none;
+            border: 1px solid color(red-focus)
+        }
+    }
+    @include xsmall {
+        .logo {
+            font-size: 22px;
+            margin-top: 4px;
+        }
+        footer {
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #878787
+        }
+        .card {
+            width: 100%;
+            height: auto;
+            color: color(dark);
+            background-color: color(white);
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+        .contain {
+            box-shadow: none;
+        }
+        .card-body {
+            width: 95%;
+            margin: 5px auto;
+        }
+        #main {
+            transition: margin-left .5s;
+            overflow: hidden;
+        }
+        .btn {
+            border-radius: 5px;
+            padding: 3px;
+            width: 75px;
+            text-decoration: none;
+            color: white;
+            background-color: color(haze-red);
+        }
+        .btn:hover {
+            background-color: color(red-focus);
+        }
+        .cardBtn {
+            padding: 15px;
+            width: 250px;
+        }
+
+        .form-control {
+            border: 1px solid color(haze-red);
+            padding: 5px;
+            border-radius: 10px;
+            width: 90%;
+            margin-top: 5px;
+            font-family: inherit;
+            font-size: 16px;
+            text-align: center
+        }
+    
+        .form-control:focus {
+            outline: none;
+            border: 1px solid color(red-focus);
+            cursor: text;
+        }
+    }
+
+    .form-control {
+        border: 1px solid color(haze-red);
+        padding: 5px;
+        border-radius: 10px;
+        width: 80%;
+        margin-top: 5px;
+        font-family: inherit;
+        font-size: 1.2rem;
+        text-align: center
+    }
+
+    .form-control:focus {
+        outline: none;
+        border: 1px solid color(red-focus)
+    }
+}
+
+
+/* Side Bar Contents */
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background-color: color(dark);
+    opacity: 0.9;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.side-nav a {
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: color(light-gray);
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover {
+    color: color(haze-red);
+}
+
+.side-nav a.active {
+    color: color(haze-red);
+}
+
+.side-nav .btn-close {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+a .cardBtn {
+    color: color(haze-red);
+    text-decoration: none;
+    transition: background-color 0.2s ease-out;
+}
+
+.cardBtn:hover {
+    transition: background-color 0.2s ease-in;
+    background-color: darken(color(white), 15%);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+.logOutBtn {
+    width: auto;
+    padding: 3px 10px;
+    transition: background-color 0.2s ease-out;
+    background-color: color(haze-red);
+    color: color(white);
+    border-radius: 5px;
+}
+
+.logOutBtn:hover {
+    transition: background-color 0.2s ease-in;
+    background-color: color(red-focus);
+    color: color(white)
+}
+
+.btn {
+    border: none;
+}
+/* Main Content Components */

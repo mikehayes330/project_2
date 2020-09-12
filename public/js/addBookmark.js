@@ -1,15 +1,26 @@
 $(document).ready(() => {
-  // this is the background image for the addbookmark page
-  const backgroundImage =
-    "https://images.unsplash.com/photo-1555066931-bf19f8fd1085?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE2MzYzN30";
-  const body = $("body");
-  body.css("background-image", "url(" + backgroundImage + ")");
-  // const myModal = $("#myModal");
-  // const modalSubmit = $("#modalSubmit");
-  // modalSubmit.on("click", myModal.modal("show"));
-
-  // Getting references to our form and input
   const googleSubmit = $("#googleSubmit");
+  const updateBtn = $(".updateButton");
+
+  setInterval(() => {
+    const currentTimeDiv = $("#currentTime");
+    const currentDayDiv = $("#currentDate");
+    const currentTime = moment().format("h:mm:ss A");
+    const currentDay = moment().format("dddd, MMM Do");
+    currentTimeDiv.text(currentTime);
+    currentDayDiv.text(currentDay);
+  }, 1000);
+  // function to set the background image
+  function setBackground() {
+    const backgroundImage =
+      "https://images.unsplash.com/photo-1555066931-bf19f8fd1085?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE2MzYzN30";
+    const body = $("body");
+    body.css("background-image", "url(" + backgroundImage + ")");
+  }
+  //calling function to set background
+  setBackground();
+
+  // this will open up new page and search the search term in google.
   googleSubmit.on("click", e => {
     e.preventDefault();
     const searchTerm = $("#google")
@@ -18,50 +29,74 @@ $(document).ready(() => {
     window.open("https://www.google.com/search?q=" + searchTerm);
     searchTerm.val("");
   });
+  //update the bookmark by using the same input as add the bookmark but uses a differnt button to call it
+  updateBtn.on("click", function() {
+    const bookmarkTitle = $("#bookmark-title");
+    const bookmarkUrl = $("#bookmark-url");
+    const id = this.dataset.id;
+    const updateBookmarkData = {
+      title: bookmarkTitle.val().trim(),
+      url: bookmarkUrl.val().trim(),
+      id: id
+    };
+    if (
+      updateBookmarkData.title.length === 0 ||
+      updateBookmarkData.url.length === 0
+    ) {
+      alert(
+        "Please fill out Add/Edit form with info to edit and choose bookmark to edit"
+      );
+    } else {
+      $.ajax("addBookmark", {
+        type: "PUT",
+        data: updateBookmarkData
+      }).then(() => {
+        // Reload the page to get the updated list
+        location.reload();
+      });
+    }
+  });
 
+  // get user data for name.
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.name);
     const userId = data.id;
 
-    const bookmarkTitle = $("#title");
-    const bookmarkUrl = $("#url");
-    const bookmarkImage = $("#image");
+    const bookmarkTitle = $("#bookmark-title");
+    const bookmarkUrl = $("#bookmark-url");
     const bookmarkSubmit = $("#bookmarkSubmit");
 
     // submitBtn is clicked we grab bookmark data and post it to api/addBOokmark
     bookmarkSubmit.on("click", event => {
       event.preventDefault();
+      console.log(bookmarkTitle);
       const bookmarkData = {
         title: bookmarkTitle.val().trim(),
         url: bookmarkUrl.val().trim(),
-        image: bookmarkImage.val().trim(),
         UserId: userId
       };
       console.log(bookmarkData);
-      addNewBookmark(
-        bookmarkData.title,
-        bookmarkData.url,
-        bookmarkData.image,
-        userId
-      );
+      addNewBookmark(bookmarkData.title, bookmarkData.url, userId);
       bookmarkTitle.val("");
       bookmarkUrl.val("");
-      bookmarkImage.val("");
     });
 
-    function addNewBookmark(title, url, image, UserId) {
-      console.log(title, url, image, UserId);
-      $.post("/api/addBookmark", {
-        title: title,
-        url: url,
-        image: image,
-        UserId: UserId
-      })
-        .then(() => {
-          window.location.replace("/addBookmark");
-          // If there's an error, handle it by throwing up a bootstrap alert
+    function addNewBookmark(title, url, UserId) {
+      console.log(title, title.length, url, url.length);
+      if (url.length === 0 || title.length === 0) {
+        alert("Please add bookmark Title & bookmark URL");
+      } else {
+        $.post("/api/addBookmark", {
+          title: title,
+          url: url,
+          UserId: UserId
         })
-        .catch(handleLoginErr);
+          .then(() => {
+            window.location.replace("/addBookmark");
+            // If there's an error, handle it by throwing up a bootstrap alert
+          })
+          .catch(handleLoginErr);
+      }
     }
 
     function handleLoginErr(err) {

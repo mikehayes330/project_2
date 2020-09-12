@@ -78,4 +78,22 @@ module.exports = function(app) {
       res.json(dbBookmark);
     });
   });
+  app.put("/addBookmark", (req, res) => {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Bookmark.update(
+      {
+        title: req.body.title,
+        url: req.body.url,
+        image: req.body.image
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    ).then(dbBookmark => {
+      res.json(dbBookmark);
+    });
+  });
 };

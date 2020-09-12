@@ -4,10 +4,12 @@ $(document).ready(() => {
   const emailInput = $("input#email-input");
   const passwordInput = $("input#password-input");
   const nameInput = $("input#name-input");
+  const APIKEY = process.env.UNSPLASH_API;
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
     event.preventDefault();
+    console.log("clicked");
     const userData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
@@ -43,4 +45,16 @@ $(document).ready(() => {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
+  $.get(
+    "https://api.unsplash.com/photos/random?client_id=" +
+      APIKEY +
+      "&count=1&orientation=landscape"
+  ).then(res => {
+    const background = res[0].urls.regular;
+    const backgroundCredit = res[0].links.html;
+    const body = $("body");
+    const photoLink = $("#photoLink");
+    body.css("background-image", "url(" + background + ")");
+    photoLink.attr("href", backgroundCredit);
+  });
 });
