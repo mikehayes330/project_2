@@ -90,11 +90,12 @@
                     <div class="row">
                         {{#each bookmark}} 
                         <div class="col-12 col-md-6 col-xl-4">
-                            <a href="https://stackoverflow.com" target="_blank">
+                            <a href="https://{{dataValues.url}}" target="_blank">
                                 <div class="card cardBtn">
                                     <div class="card-header">
                                          <h2 style="color: #E87770">{{dataValues.title}}</h2>
                                     </div>
+                            </a>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-6">
@@ -104,15 +105,16 @@
                                                 <button class="updateButton btn" data-toggle="tooltip" data-placement="right" title="Fill out form above and click edit to edit bookmark" data-id="{{dataValues.id}}">Edit</button>
                                             </div>
                                         </div>
+                                        
+                                    </div>
+                                
+                                 </div>
+                        </div>
                                         {{else}}
                                             <div class="col-12 col-md-12 col-xl-12">
                                                 <h2 style="text-align: center;">No Bookmarks Saved. Please add bookmarks.</h2>
                                             </div>
                                         {{/each}}
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -132,19 +134,3 @@
     <script type="text/javascript" src="js/moment.js"></script>
 
 
-  {{!-- <div id="bookmarkDiv" class="col-md-6 col-md-offset-3">
-    {{#each bookmark}}
-
-    <div class="whiteText">
-      <p>{{dataValues.title}}</p>
-      <p><a target="_blank" href="https://{{dataValues.url}}"> {{dataValues.url}} </a></p>
-      
-    </div>
-
-    {{else}}
-
-    <p>No Bookmarks Saved yet.</p>
-
-    {{/each}}
-
-  </div> --}}
