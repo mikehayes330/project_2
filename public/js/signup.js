@@ -4,12 +4,11 @@ $(document).ready(() => {
   const emailInput = $("input#email-input");
   const passwordInput = $("input#password-input");
   const nameInput = $("input#name-input");
-  const APIKEY = process.env.UNSPLASH_API;
+  const APIKEY = "iYuBzpWZ8zDUHFI7z0S3VrwjPKiRAFv233EFa";
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
     event.preventDefault();
-    console.log("clicked");
     const userData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),

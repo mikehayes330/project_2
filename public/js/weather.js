@@ -22,7 +22,7 @@ function showPosition(position) {
   $.get(weatherURL, data => {
     const weatherIcon = data.weather[0].icon;
     const weatherIconUrl =
-      "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
+      "http://openweathermap.org/img/wn/" + weatherIcon + ".png";
     console.log(weatherIconUrl);
     $("#iconDisplay").html(`<img src="${weatherIconUrl}"/>`);
     $("#tempDisplay").text(parseInt(data.main.temp) + "\u00B0 F");
