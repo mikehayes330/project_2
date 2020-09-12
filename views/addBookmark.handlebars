@@ -93,19 +93,26 @@
                             <a href="https://stackoverflow.com" target="_blank">
                                 <div class="card cardBtn">
                                     <div class="card-header">
-                                         <h2>{{dataValues.title}}</h2>
+                                         <h2 style="color: #E87770">{{dataValues.title}}</h2>
                                     </div>
-                                         </a>
-                                             <button class="delete-bookmark btn" data-toggle="tooltip" data-placement="left" title="Delete this bookmark" data-id="{{dataValues.id}}"><i class="fas fa-trash-alt"></i></button>
-                                             <button class="updateButton btn" data-toggle="tooltip" data-placement="right" title="Fill out form above and click edit to edit bookmark" data-id="{{dataValues.id}}">Edit</button>
-                                </div>
-                            
-                        
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button class="delete-bookmark btn" data-toggle="tooltip" data-placement="left" title="Delete this bookmark" data-id="{{dataValues.id}}"><i class="fas fa-trash-alt"></i></button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="updateButton btn" data-toggle="tooltip" data-placement="right" title="Fill out form above and click edit to edit bookmark" data-id="{{dataValues.id}}">Edit</button>
+                                            </div>
+                                        </div>
+                                        {{else}}
+                                            <div class="col-12 col-md-12 col-xl-12">
+                                                <h2 style="text-align: center;">No Bookmarks Saved. Please add bookmarks.</h2>
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        {{else}}
-                        <h2>No Bookmarks Saved. Please Save Bookmark Above.</h2>
-                        {{/each}}
-                        
                     </div>
                 </div>
             </div>
