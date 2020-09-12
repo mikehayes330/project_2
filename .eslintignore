@@ -1,3 +1,4 @@
 models/index.js
 node_modules
 public/js/moment.js
+public/js/sidenav.js
