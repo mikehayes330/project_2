@@ -13,13 +13,13 @@ html {
   background-color: #EDEDED;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 /* Main Header Components */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  
 }
 
 body header {
@@ -483,7 +483,6 @@ a:focus {
 .btn {
   border: none;
 }
-
 
 /* Main Content Components */
 /*# sourceMappingURL=index.css.map */
