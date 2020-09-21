@@ -8,6 +8,10 @@ const passport = require("./config/passport");
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
 
+const compression = require("compression");
+
+app.use(compression({ filter: shouldCompress }));
+
 //creating const for handlebars
 
 const exphbs = require("express-handlebars");
